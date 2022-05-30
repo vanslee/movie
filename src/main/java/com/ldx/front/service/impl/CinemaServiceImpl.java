@@ -1,6 +1,8 @@
 package com.ldx.front.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.ldx.front.pojo.Cinema;
 import com.ldx.front.service.CinemaService;
 import com.ldx.front.mapper.CinemaMapper;
@@ -15,6 +17,10 @@ import org.springframework.stereotype.Service;
 public class CinemaServiceImpl extends ServiceImpl<CinemaMapper, Cinema>
     implements CinemaService{
 
+    @Override
+    public PageInfo getPages(int pageNum, int pageSize) {
+        return PageHelper.startPage(pageNum,pageSize).doSelectPageInfo(()->list());
+    }
 }
 
 

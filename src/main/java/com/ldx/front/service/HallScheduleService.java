@@ -1,5 +1,6 @@
 package com.ldx.front.service;
 
+import com.github.pagehelper.PageInfo;
 import com.ldx.front.pojo.HallSchedule;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -10,4 +11,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface HallScheduleService extends IService<HallSchedule> {
 
+    PageInfo getPages(int pageNum, int pageSize);
 }

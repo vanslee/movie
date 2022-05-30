@@ -1,5 +1,6 @@
 package com.ldx.front.service;
 
+import com.github.pagehelper.PageInfo;
 import com.ldx.front.pojo.Admin;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -9,5 +10,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @createDate 2022-05-27 09:04:52
 */
 public interface AdminService extends IService<Admin> {
-
+    PageInfo getPages(int pageNum, int pageSize);
 }

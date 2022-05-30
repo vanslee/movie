@@ -18,11 +18,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class MovieServiceImpl extends ServiceImpl<MovieMapper, Movie>
     implements MovieService{
-    @Autowired
-    private MovieMapper movieMapper;
+
     @Override
-    public PageInfo<Movie> getPages(int pageNum, int pageSize) {
-        return PageHelper.startPage(pageNum, pageSize).doSelectPage(() -> list()).toPageInfo();
+    public PageInfo getPages(int pageNum, int pageSize) {
+            return PageHelper.startPage(pageNum,pageSize).doSelectPageInfo(()->list());
     }
 }
 

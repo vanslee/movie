@@ -1,6 +1,8 @@
 package com.ldx.front.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.ldx.front.pojo.Orders;
 import com.ldx.front.service.OrdersService;
 import com.ldx.front.mapper.OrdersMapper;
@@ -15,6 +17,10 @@ import org.springframework.stereotype.Service;
 public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders>
     implements OrdersService{
 
+    @Override
+    public PageInfo getPages(int pageNum, int pageSize) {
+        return  PageHelper.startPage(pageNum, pageSize).doSelectPageInfo(()->list());
+}
 }
 
 

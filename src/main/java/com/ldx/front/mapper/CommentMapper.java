@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @createDate 2022-05-27 09:04:52
 * @Entity com.ldx.font.pojo.Comment
 */
+
 public interface CommentMapper extends BaseMapper<Comment> {
 
 }

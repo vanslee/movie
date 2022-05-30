@@ -1,24 +1,65 @@
 package com.ldx.front.controller;
 
 import com.ldx.front.pojo.Admin;
+import com.ldx.front.pojo.Movie;
 import com.ldx.front.service.AdminService;
+import com.ldx.utils.AjaxResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Api(tags="后台管理员接口",value = "管理员接口详细API")
 @RestController
-@Api(tags="管理接口",description = "管理员接口API")
+@RequestMapping("/admin")
 public class AdminController {
     @Autowired
     private AdminService adminService;
-    @RequestMapping("/admin")
-    @ApiOperation(value = "获取管理员",notes = "获取所有管理员")
-    public List<Admin> getAll(){
-        List<Admin> list = adminService.list();
-        return list;
+    @GetMapping("/{pageNum}/{pageSize}")
+    @ApiOperation(value = "查询接口",notes = "分页查询所有管理员")
+    public AjaxResult getPages(@PathVariable int pageNum,@PathVariable int pageSize){
+        return AjaxResult.success(adminService.getPages(pageNum,pageSize));
+    }
+    @GetMapping("/{id}")
+    @ApiOperation(value = "查询接口",notes = "ID查询管理员")
+    public AjaxResult getPages(@PathVariable Integer id){
+        return AjaxResult.success(adminService.getById(id));
+    }
+    /**
+     * 添加管理员
+     * @param admin
+     * @return
+     */
+    @PutMapping
+    @ApiOperation(value = "添加或更新接口",notes = "根据传入数据有无id增改数据")
+    public AjaxResult save(@RequestBody Admin admin) {
+        if (admin.getId() != null) {
+            try {
+                return AjaxResult.success(adminService.updateById(admin));
+            } catch (Exception e) {
+                return AjaxResult.fail(e.getMessage());
+            }
+        }
+        try {
+            return AjaxResult.success(adminService.save(admin));
+        }catch (Exception e){
+            return AjaxResult.fail(e.getMessage());
+        }
+    }
+
+    /**
+     * @param id 管理员id
+     * @return
+     */
+    @DeleteMapping("/{id}")
+    @ApiOperation(value = "管理员删除接口",notes = "通过id删除管理员")
+    public AjaxResult deleteById(@PathVariable Integer id) {
+        try {
+            return AjaxResult.success(adminService.removeById(id));
+        }catch (Exception e) {
+            return AjaxResult.fail(e.getMessage());
+        }
     }
 }

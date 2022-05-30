@@ -10,5 +10,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @createDate 2022-05-27 09:04:53
 */
 public interface MovieService extends IService<Movie> {
-        PageInfo<Movie> getPages(int pageNum,int pageSize);
+        PageInfo getPages(int pageNum,int pageSize );
 }
