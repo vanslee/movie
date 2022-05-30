@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ldx.front.mapper.MovieMapper">
+
+    <resultMap id="BaseResultMap" type="com.ldx.front.pojo.Movie">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="title" column="title" jdbcType="VARCHAR"/>
+            <result property="mtype" column="mtype" jdbcType="VARCHAR"/>
+            <result property="year" column="year" jdbcType="INTEGER"/>
+            <result property="area" column="area" jdbcType="VARCHAR"/>
+            <result property="publishdate" column="publishdate" jdbcType="DATE"/>
+            <result property="rating" column="rating" jdbcType="DOUBLE"/>
+            <result property="director" column="director" jdbcType="VARCHAR"/>
+            <result property="actor" column="actor" jdbcType="VARCHAR"/>
+            <result property="summary" column="summary" jdbcType="VARCHAR"/>
+            <result property="pic" column="pic" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,title,
+        mtype,year,area,
+        publishdate,rating,director,
+        actor,summary,pic
+    </sql>
+</mapper>
