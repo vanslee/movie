@@ -8,11 +8,11 @@
             <id property="id" column="id" jdbcType="INTEGER"/>
             <result property="name" column="name" jdbcType="VARCHAR"/>
             <result property="title" column="title" jdbcType="VARCHAR"/>
-            <result property="mtype" column="mtype" jdbcType="VARCHAR"/>
-            <result property="year" column="year" jdbcType="INTEGER"/>
-            <result property="area" column="area" jdbcType="VARCHAR"/>
             <result property="publishdate" column="publishdate" jdbcType="DATE"/>
             <result property="rating" column="rating" jdbcType="DOUBLE"/>
+            <result property="mtype" column="mtype" jdbcType="VARCHAR"/>
+            <result property="year" column="year" jdbcType="VARCHAR"/>
+            <result property="area" column="area" jdbcType="VARCHAR"/>
             <result property="director" column="director" jdbcType="VARCHAR"/>
             <result property="actor" column="actor" jdbcType="VARCHAR"/>
             <result property="summary" column="summary" jdbcType="VARCHAR"/>

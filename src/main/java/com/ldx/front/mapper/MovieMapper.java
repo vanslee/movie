@@ -3,6 +3,8 @@ package com.ldx.front.mapper;
 import com.ldx.front.pojo.Movie;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
+import java.util.List;
+
 /**
 * @author ldx
 * @description 针对表【movie】的数据库操作Mapper

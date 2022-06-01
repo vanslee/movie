@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
+
+import io.swagger.models.auth.In;
 import lombok.Data;
 
 /**
@@ -35,11 +37,10 @@ public class Movie implements Serializable {
      * 影片类型
      */
     private String mtype;
-
     /**
      * 年份
      */
-    private Integer year;
+    private String year;
 
     /**
      * 上映地区
