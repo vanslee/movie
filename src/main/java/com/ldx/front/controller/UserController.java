@@ -8,13 +8,22 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 
 @Api(value = "会员接口",tags = "会员详细接口API")
 @RestController
-@RequestMapping("/user ")
+@RequestMapping("user")
 public class UserController {
     @Autowired
     private UserService userService;
+    //登录接口
+    @PostMapping("login")
+    @ApiOperation(value = "登录接口",notes="校验用户")
+    public AjaxResult login(@RequestBody User user, HttpSession httpSession) {
+        return userService.login(user,httpSession);
+    }
+
     @GetMapping("/{pageNum}/{pageSize}")
     @ApiOperation(value = "查询会员",notes = "分页查询所有会员")
     public AjaxResult getPages(@PathVariable int pageNum, @PathVariable int pageSize){

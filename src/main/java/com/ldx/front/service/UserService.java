@@ -3,6 +3,9 @@ package com.ldx.front.service;
 import com.github.pagehelper.PageInfo;
 import com.ldx.front.pojo.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.ldx.utils.AjaxResult;
+
+import javax.servlet.http.HttpSession;
 
 /**
 * @author ldx
@@ -12,4 +15,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface UserService extends IService<User> {
 
     PageInfo getPages(int pageNum, int pageSize);
+
+    AjaxResult login(User user, HttpSession session);
 }

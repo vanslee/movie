@@ -28,7 +28,7 @@ public class Tyinfo implements Serializable {
     /**
      * 
      */
-    private String type;
+    private String ttype;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

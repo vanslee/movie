@@ -30,6 +30,12 @@ public class AjaxResult {
         this.msg = msg;
         this.data = null;
     }
+    public AjaxResult(String msg,Object data) {
+        this.code = 200;
+        this.success = true;
+        this.msg = msg;
+        this.data = data;
+    }
     public AjaxResult(int code, Object data, Boolean success, String msg) {
         this.code = code;
         this.data = data;
@@ -64,6 +70,9 @@ public class AjaxResult {
      */
     public static AjaxResult success(Object data) {
         return new AjaxResult(data);
+    }
+    public static AjaxResult success(String msg,Object data){
+        return  new AjaxResult(msg,data);
     }
 
     /**

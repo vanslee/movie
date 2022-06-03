@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+import java.util.List;
+
 import lombok.Data;
 
 /**
@@ -32,4 +34,7 @@ public class Type implements Serializable {
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
+    // 存放Tyinfo表信息
+    @TableField(exist = false)
+    private List<Tyinfo> typeDetail;
 }

@@ -20,7 +20,7 @@ public class MovieServiceImpl extends ServiceImpl<MovieMapper, Movie>
     implements MovieService{
 
     @Override
-    public PageInfo getPages(int pageNum, int pageSize) {
+    public PageInfo<Object> getPages(int pageNum, int pageSize) {
             return PageHelper.startPage(pageNum,pageSize).doSelectPageInfo(()->list());
     }
 }

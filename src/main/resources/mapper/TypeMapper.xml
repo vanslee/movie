@@ -5,12 +5,18 @@
 <mapper namespace="com.ldx.front.mapper.TypeMapper">
 
     <resultMap id="BaseResultMap" type="com.ldx.front.pojo.Type">
-            <id property="id" column="id" jdbcType="INTEGER"/>
-            <result property="typeinfo" column="typeInfo" jdbcType="VARCHAR"/>
-            <result property="did" column="did" jdbcType="INTEGER"/>
+        <result property="typeinfo" column="typeInfo" jdbcType="VARCHAR"/>
+        <collection property="typeDetail" ofType="com.ldx.front.pojo.Tyinfo">
+            <result property="id" column="id" jdbcType="INTEGER"/>
+            <result property="ttype" column="type" jdbcType="VARCHAR"/>
+        </collection>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,typeInfo,did
+        id
+        ,typeInfo,did
     </sql>
+    <select id="getAllTypes" resultMap="BaseResultMap">
+        SELECT t.typeInfo,y.type,y.id  from type t, tyinfo y WHERE t.did = y.tid
+    </select>
 </mapper>

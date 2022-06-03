@@ -7,7 +7,7 @@
     <resultMap id="BaseResultMap" type="com.ldx.front.pojo.Tyinfo">
             <id property="id" column="id" jdbcType="INTEGER"/>
             <result property="tid" column="tid" jdbcType="INTEGER"/>
-            <result property="type" column="type" jdbcType="VARCHAR"/>
+            <result property="ttype" column="type" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
