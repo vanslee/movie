@@ -5,6 +5,8 @@ import lombok.Data;
 @Data
 public class UserDTO {
     private Long id;
-    private String nickName;
-    private String icon;
+    private String username;
+    private String nickname;
+    private String pic;
+    private String token;
 }

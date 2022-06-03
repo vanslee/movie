@@ -3,6 +3,7 @@ package com.ldx.front.controller;
 import com.ldx.front.pojo.User;
 import com.ldx.front.service.UserService;
 import com.ldx.utils.AjaxResult;
+import com.ldx.utils.MD5Utils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

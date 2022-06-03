@@ -12,6 +12,8 @@ import com.ldx.front.pojo.User;
 import com.ldx.front.service.UserService;
 import com.ldx.front.mapper.UserMapper;
 import com.ldx.utils.AjaxResult;
+import com.ldx.utils.MD5Utils;
+import com.ldx.utils.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -50,19 +52,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         if (user.getPassword() == null || user.getPassword() == "") return AjaxResult.fail("密码不能为空");
         User u = userMapper.selectOne(new QueryWrapper<User>().eq("username", user.getUsername()));
         if (u == null) return AjaxResult.fail("用户不存在,请前往注册页面");
-        if (!u.getPassword().equals(user.getPassword())) return AjaxResult.fail("用户名或密码错误");
-        //TODO 6.写入redis中
-        // 6.1 随机生成token,作为登录令牌
-        String token = UUID.randomUUID().toString(true);
-        //TODO 6.2 将User转换成HashMap存储
-        Map<String, Object> userMap = BeanUtil.beanToMap(u, new HashMap<>(),
-                CopyOptions.create()
-                        .setIgnoreNullValue(true));
-        //TODO 6.3存储
-        stringRedisTemplate.opsForHash().putAll(LOGIN_USER_KEY + token, userMap);
-        stringRedisTemplate.expire(LOGIN_USER_KEY + token, LOGIN_TOKEN_TTL, TimeUnit.SECONDS);
+        UserDTO userDTO = BeanUtil.toBean(u, UserDTO.class, CopyOptions.create().setIgnoreNullValue(true));
+        String token = TokenUtils.getToken(u.getId().toString(),u.getPassword());
+        userDTO.setToken(token);
         // 7返回Token
-        return AjaxResult.success("登录成功", token);
+        return AjaxResult.success(userDTO);
     }
 }
 
